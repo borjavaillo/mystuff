@@ -31,10 +31,19 @@ def uname():
 def uname2():
     local("uname -a")
 
+def query_puppet():
+    run("uname -a")
+
 # error handling example
 
 def error_handling():
     with settings(warn_only=True):
 	if local("ls -ld %s" % fakedir).failed:
 	    print("eeeerrorr")
-local("ls -ld %s" % fakedir).succeeded
+            local("ls -ld %s" % fakedir).succeeded
+
+# Define routines to be only run locally from below this point ( where we place the @hosts decorator... )
+@hosts('localhost')
+def generate_ec2_running_instances_full_list():
+    env.hosts = local("../aws/public_dns_running_instances.sh")
+    print env.hosts
