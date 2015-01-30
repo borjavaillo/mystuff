@@ -1,0 +1,7 @@
+those scripts work by simply having a $HOME/.boto file with:
+
+[Credentials]
+aws_access_key_id = HARDCODED_ACCESS_KEY
+aws_secret_access_key = HARDCODED_SECRET_ACCESS_KEY
+[Boto]
+debug = 0
