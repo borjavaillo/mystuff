@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import boto.ec2
 
-print boto.ec2.regions()
-
+regions = boto.ec2.regions()
+print "\nAvailable regions:"
+for r in regions:
+  print r
