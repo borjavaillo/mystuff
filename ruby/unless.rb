@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/ruby
 print "Integer please: "
 user_input = Integer(gets.chomp)
 unless user_input < 3

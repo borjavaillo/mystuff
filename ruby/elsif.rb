@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/ruby
 print "Integer please: "
 user_num = Integer(gets.chomp)
 

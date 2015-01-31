@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/ruby
 grades = { :alice => 100,
   :bob => 92,
   :chris => 95,

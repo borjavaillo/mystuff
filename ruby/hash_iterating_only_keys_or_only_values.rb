@@ -1,4 +1,4 @@
-#!/usr/local/bin/ruby
+#!/usr/bin/ruby
 my_hash = { :one => 1, :two => 2, :three => 3 }
 
 my_hash.each_key { |k| print k, " " }
