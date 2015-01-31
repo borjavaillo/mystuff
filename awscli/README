@@ -1,0 +1,6 @@
+credentials should be stored on $HOME/.aws/config
+
+[default]
+region = eu-west-1
+aws_secret_access_key = xxxxx
+aws_access_key_id = xxxxxxx
