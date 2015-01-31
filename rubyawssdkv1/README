@@ -1,0 +1,1 @@
+use exported vars to denote aws key, private key and region ( I export them from .bashrc: AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY and AWS_REGION
