@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-# The script requires a security group as first positional parameter and a port as second ( TCP is assumed, by now )
-# We don't doublecheck validity of either SG or port so use at your own peril!!!
-# This script will make sure that the specified SG and TCP port accept incoming traffic from CLOUDFRONT ( can be changed onto a variable if needed in the future ). The ipranges used are those announced by AWS themseleves. 
+# The script requires a security group as first positional parameter, a port number as second, a protocol as a third  ( UDP or TCP ) and an AWS service as fourth
+# We don't doublecheck validity of either parameter, so use at your own peril!!!
+# This script will make sure that the specified SG and TCP port/protocol accept incoming traffic from whichever AWS service we query the AWS endpoint for
 
 # Stuff we need
 require 'aws-sdk'
@@ -12,24 +12,21 @@ require 'open-uri'
 # Setting the positional parameters
 security_group = ARGV[0]
 security_group_port = ARGV[1]
+protocol = ARGV[2]
+service = ARGV[3]
 # Raise exception if any positional parameter is not set
-raise 'pass positional parameters: sg sg_port' unless security_group and security_group_port
+raise 'pass positional parameters: sg_name sg_port udp/tcp AWS_service' unless security_group and security_group_port and protocol and service
 
 # cfn_endpoint_ranges is a unidimensional array whose components are ipadresses with netmask ( x.x.x.x/y ) retrieved from AWS, those are the ranges that provide the CLOUDFRONT service
-cfn_endpoint_ranges = JSON.parse(open("https://ip-ranges.amazonaws.com/ip-ranges.json") { |io| io.read })["prefixes"].select {|p| p["service"]=="CLOUDFRONT"}.map{|component| component['ip_prefix']};
-
-# Now let's find out the rules matching our SG and port on our infrastructure
-ec2 = Aws::EC2::Client.new
-#puts resp = ec2.describe_security_groups({group_names: ["#{security_group}"]})
-resp = ec2.describe_security_groups(:filters => [ { :name => "#{security_group}", :values => [id] } ]).security_group_index.key?(id)
-
+endpoint_ranges = JSON.parse(open("https://ip-ranges.amazonaws.com/ip-ranges.json") { |io| io.read })["prefixes"].select {|p| p["service"]=="CLOUDFRONT"}.map{|component| component['ip_prefix']};
 
 
 # ==========ENDBEGIN===================
 # Ex: Print each element of the array
-#cfn_endpoint_ranges.each do |component|
-#  puts "#{component}"
-#end
+endpoint_ranges.each do |component|
+  puts "el component es"
+  puts "#{component}"
+end
 
 #puts security_group
 #puts security_group_port
