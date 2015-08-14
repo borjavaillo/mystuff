@@ -17,8 +17,8 @@ service = ARGV[3]
 # Raise exception if any positional parameter is not set
 raise 'pass positional parameters: sg_name sg_port udp/tcp AWS_service' unless security_group and security_group_port and protocol and service
 
-# cfn_endpoint_ranges is a unidimensional array whose components are ipadresses with netmask ( x.x.x.x/y ) retrieved from AWS, those are the ranges that provide the CLOUDFRONT service
-endpoint_ranges = JSON.parse(open("https://ip-ranges.amazonaws.com/ip-ranges.json") { |io| io.read })["prefixes"].select {|p| p["service"]=="CLOUDFRONT"}.map{|component| component['ip_prefix']};
+# cfn_endpoint_ranges is a unidimensional array whose components are ipadresses with netmask ( x.x.x.x/y ) retrieved from AWS, those are the ranges that provide the ARGV[3] service ( fourth positional parameter )
+endpoint_ranges = JSON.parse(open("https://ip-ranges.amazonaws.com/ip-ranges.json") { |io| io.read })["prefixes"].select {|p| p["service"]=="#{ARGV[3]}"}.map{|component| component['ip_prefix']};
 
 
 # ==========ENDBEGIN===================
