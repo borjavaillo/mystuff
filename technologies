@@ -1,0 +1,4 @@
+AWS: EC2, VPC, cloudfront, cloudtrail, ec2, ecs, elasticsearch service, s3, rds, route53, cloudwatch, config, iam, ses, sqs
+
+apache, apt, awscli, rubysdk, boto, cpan ( for perl support ), cron, sshd, fluentd, geoip ( maxmind ), graphite, haproxy, rbenv, redis, puma, unicorn, nginx, java apps, logrotate, maven, nodejs, puppet, monit, 
+ntp, proftpd, rabbitmq, sensu, splunk, ssmtp, sudo, uchiwa, glusterfs, varnish
