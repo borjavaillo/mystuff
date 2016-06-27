@@ -2,3 +2,6 @@ AWS: EC2, VPC, cloudfront, cloudtrail, ec2, ecs, elasticsearch service, s3, rds,
 
 apache, apt, awscli, rubysdk, boto, cpan ( for perl support ), cron, sshd, fluentd, geoip ( maxmind ), graphite, haproxy, rbenv, redis, puma, unicorn, nginx, java apps, logrotate, maven, nodejs, puppet, monit, 
 ntp, proftpd, rabbitmq, sensu, splunk, ssmtp, sudo, uchiwa, glusterfs, varnish
+
+Si vols començar per algo et pots documentar per chef, tenim una part en la versio 10 i s'ha de migrar a la versió 12. Si vols pots mirarte lo de Chef Solo, masterless i podem impelentar-ho i ens carreguem un server in-house.
+Si vols mirar algo de BigData, fes-li un cop d'ull a Redshift (AWS) i a aixo https://www.cloudera.com/products/apache-hadoop.html,  es una distro / VM amb tot el ecosistema de Hadoop muntat, pot ser un bon starter point per començar a entendre de que va encara que no la fem servir.
