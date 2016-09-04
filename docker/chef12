@@ -1,0 +1,9 @@
+FROM ubuntu:16.04
+MAINTAINER Brandcrumb, menganito@brandcrumb.com
+
+RUN apt-get update && apt-get -y install ruby2.3 ruby2.3-dev zlib1g-dev build-essential
+RUN gem install chef --no-ri --no-rdoc
+RUN gem install test-kitchen --no-ri --no-rdoc
+RUN gem install kitchen-vagrant --no-ri --no-rdoc
+RUN gem install berkshelf --no-ri --no-rdoc
+RUN gem install knife-ec2 --no-ri --no-rdoc
