@@ -45,3 +45,9 @@ el término de Amazon ). Con esto y packer conseguimos la total reproducibilidad
 - Dockerizatioin of knife10 and knife12 ( chef10 and chef12 tools )
 - migration of git repos to github
 - AWS Budget reducción: Muchísimas veces en varios servicios, Ec2, RDS, ES... tenemos más margen pero no mucho más ( pagamos la mitad que en los primeros meses que estuve aquí...)
+- URI monitoring con runscope para checks internos
+- proxy kibana
+- estudio y documentación para Bankia de lo que en principio aceptaron pero al final no
+- ansible 8 usos )
+- deploy framework para in-house software
+- consul-alerts
