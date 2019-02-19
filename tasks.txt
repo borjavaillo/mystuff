@@ -1,0 +1,162 @@
+Hola, como llevo ya más de 2 años y medio aquí algunas cosas que he hecho ya han sido obsoletas por otras que
+he hecho en posterioridad, sigue un resumen de lo hecho hasta la fecha, al final menciono los aspectos más 
+importantes de cara al futuro y la rutina diaria que hay qué hacer sí o sí ( básicamente: comprovar la monitorización )
+
+- introducción de cloudtrail ( almacenamos eventos de la plataforma ahí ( un evento es un cambio de estado de un recurso) )
+- elaboración de guía de setup de openvpn para cliente
+- script para restaurar instancia de RDS a partir de un snapshot ( para mi propia operativa )
+- script para detectar unhealthy instancias detrás de un balanceador ( para mi propia operativa )
+- script para sacar datos de los security groups ( nombre, id, permisos... ) ( para mi propia operativa )
+- script para generar container de docker en localhost con la última versión de boto ( AWS SDK de python ) PoC
+- script para calcular normalization units de RDS y EC2 ( esto tiene sentido a la hora de hacer/estudiar reservas). Está ligado a consul que
+que corre una versión alterada de este script dentro de otro script más chunky )
+- script para dumpear todas las zonas que tenemos en R53 y sus registros ( para mi propia operativa )
+- dada la pesadez de comprobar en la consola de AWS si una instancia cuelga o no de un ELB: elaboración de scriptillo para ver todas las instancias que cuelgan de un ELB
+- deprecación AWS batch ( alguien en SW lo habilitó y no se usaba, solo se pagaba... )
+- Dynamo AWS native service deprecado
+- introducción de cloudwatch logs
+- cleanup github usuarios obsoletos y determinar usuario standard programático
+- Con Jorge deprecamos toda la infrastructura de la organziación de AWS Banco de Sabadell ( 500$/mes )
+- deprecated minikube, demos y superset después de estudiarlo con Jorge
+- El 2 de enero empezaron a salir demographic reports en blanco; troubleshooting con Jorge de todo el flujo hasta
+que dimos con el problema de Glacier.
+- integrity checker script para comparar directorios y archivos ( via comparación de md5sum ) entre el servidor de VPN de PROD y
+la AMI almacenada para disaster recovery
+- setup de cluster de ELK en US N. Virginia
+- kernels fuera de uso consumen un montón de espacio y inodos, introduje una solución scripteada ejecutada via
+cron y distribuida con ansible para evitar los problemas de acumular kernels obsoletos en los hosts
+- testeado de autoscaler en kubernetes
+- solución para añadir y sacar add-ons de cluster de kubernettes
+- estudio de la posibilidad de hacer in-house deployments con ansible y helm
+- networking en kubernetes ( drivers and so on )
+- Review RDS Performance Insights para posible aplicabilidad ( lo mismo para AWS Config )
+- Deprecación de instancias de RDS rds-production-form-analytics and rds-production-eulerian
+bankia-recommender-light
+- Troubleshooting de pipelines ( 5 ) que dejaron de funcionar porque AWS había cambiado la AMI subyacente.
+- script para checquear validez de certificados SSL integrado en monitorización de consul
+- RDS: famílias m1 y m2 deprecadas por AWS, fueron sustituidas por otras instancias
+- elaboración de un protocolo scripteado de backup para servidor de VPN ( y llaves y certificados ): lo uso cada vez que entra o se va alguien que es cada vez que cambia la configuración y llaves/certs del servidor de VPN
+- test ansible 2.7: incorpora mucha funcionalidad absente en 2.2. ( la que empezamos a usar )
+- comparativa de specs de instancias creadas por packer/user-data ( nuestro prototipado clásico ) versus terraform
+- deprecación production-blogs
+- Troubleshooting fallos en ejecución cron:ccf_userdefinition pipeline ( esto se saldría bastante de mi trabajo pero si me lo piden, ayudo 
+como en el caso de las pipeline citadas con anterioridad )
+- Todas nuestras instancias tienen, por defecto 8GB de disco, elaboración de un protocolo para tener custom disk size
+cuando sea necesario
+- reemplazo infra brandcrumb-identifier-api
+- FTP host NTP offsyncing, how to fix cuando ocurre el problema documentado ( no me preocupa el único efecto que tiene este error es que deja de
+reportar a cloudwatch y es fácil arreglarlo )
+- cooperación con Chema para deployar kubernettes primero en instancias de Ec2, luego como servicio nativo de AWS ( PROYECTAZO )
+- cooperación con Chema para introducir kops, kube2iam, helm
+- investigación del módulo de ansible de kubernetes
+- Changed rotation for Rafa ( from Ec2 to S3 )
+- script para tener sumario de uso de ECUs en Ec2  ( como utilizamos reservas regionales nos interesa tener un sumario "broken down" en regiones
+y famílias: eso hace el script )
+- script para tener sumario de uso de ECUs en RDS ( Misma motivación del punto anterior ) 
+- incorporación del dominio paguro.io en Gsuite y protocolo a seguir para que sea el primario del usuario
+- script para monitorizar vida útil de los dominios
+- sistema de scripts para tener controladas las reservas de Ec2 y RDS ( comparamos "reservas actuales" con "deseadas" )
+- elaboración de draft para service provisioning a compañías externas basado en seguridad e infraestructura
+- creación de cloud9 VPC
+- Creación de AWS Workspaces ( posteriormente lo deprecamos: solo lo utilizaba yo y era horrible... )
+- Estudio de steal cpu en la plataforma de Ec2 ( introducción de check específico )
+- Habilitar timestamps platform-wide en toda la plataforma de Ec2
+- nuevo diagrama de red después de la migración de Pau Clarís
+- Devised and implemented scheme for consul-alerts key-value system, as well as a system to retrieve and
+store current configuration and values
+- Upgraded all MySqls with minor version 5.7.11
+- Con SW troubleshooting fingerprinting
+- replaced passive-logstash infrastructure with custom prototyped infra
+- fixed systemd for crumbanalytics service and explained Chema how to fix it on the code.
+- replaced infrastructure of external scrapper and analyticsgw
+- Introducción de systat a toda la plataforma de Ec2
+- creación de servicio de prototipado de instancias: se trataba de crear un sistema mediante el cual tanto la imagen como la instancia fueran
+enteramente reproducibles para conseguir homogeneidad ( antes teníamos 23 imágenes distintas sin control de qué corría cada una, ahora si se siguen
+las instrucciones ) no debería ser el caso.
+Esto lo conseguimos mediante el uso de packer con conjunción con dos scripts in-house que hice para parametrizar y lanzar instancias. ( PROYECTAZO )
+- Añadir funcionalidad de rol y taggeado de Ec2 a nuestro servicio de prototipado de instancias
+- Creación de la infraestructura de NER
+- Enable de nginx status en todos lados ( para facilitar monitorización )
+- Consul: definición de security groups, elaboración de scripts de init, configuración de autojoin para nodos,
+protocolo de disaster recovery del cluster, elaboración de checks... ( PROYECTAZO )
+- Summary of instances EC2 and RDS and their use ( primero con Chema, después con Jorge ). Últimamente migrado a confluence
+- Cleanup zonas DNS: con el tiempo acumula legacy, se repasan dos o tres veces al año, aproximadamente
+- migration FTP host to Ec2 ( Internet, not VPC )
+- elaboración ( y documentación ) de como introducir una nueva VPC con conexión a la VPN corporativa ( relacionado
+con AWS organizations ) ( PROYECTAZO ( en fase embrionaria es el prerequisito a la introducción de terraform. Tenemos prerequisito funcional pero es un poco beta ( no en términos de fiabilidad, es 100% fiable, lo he probado mínimo 4 o 5 veces, ya))
+- Github elaboración de documentación de uso, particularidades y traspaso oficial de responsabilidad de gestión de github a SW ( que son sus usuarios principales, yo solo soy un usuario más ). Aún así sigo ocupándome de añadir sacar usuarios cuando la gente viene o se va como step particular de llegada/ida de usuario, puesto que me ocupo del resto de servicios, también y no me cuesta nada añadir o sacar de github, también.
+- migration of maven repos from hosted in Pau Claris to AWS S3
+- securing AWS: cuando llegue había muchas vulnerabilidades, por ejemplo, puertos ssh abiertos a internet tanto en el servidor
+de VPN como en hosts de AWS. También nestaba habilitado el acceso por VPN a ex empleados, se cerraron. Se auditió y corrigió todo esto. Respecto Ec2 ( VPC e internet ) y RDS PENDIENTE: setear scaneo automatizado en AWS para Ec2, RDS y otros recursos ( muy costoso en términos de tiempo ). No estamos a salvo de humano introduciendo
+errores ( en forma de security groups demasiado abiertos ).
+- Habilitar Glacier para buckets ( y paths ) aptos y acordados con SW para reducir costes 
+- Deprecación de servidores físicos de Pau Claris y/o migración de sus servicios a AWS( PROYECTO GORDETE )
+- redmine: upgrade de versión cuando estábamos en Pau clarís, posterior migración a AWS, migración de TODOS los contenidos relevantes a Confluence ( se aprovechó para descartar material obsoleto aunque se fue conservador, conservamos un directorio de 
+historical legacy con lo que pueda ser aprovechable ). Dockerización ensayada y documentada de REdmine para cuando pueda deshabilitarse.
+- Cooperación en el setup de EMR en AWS
+- Mapa de Redes de brandcrumb y documentación asociada: no existía nada al respecto traceando conseguí documentarlo todo
+- Cooperación en el setup de API GW service: temas relacionados con R53, certificados ssl...
+- Introducción de ACM ( servicio centralizaddo de AWS de gestión de certificados SSL ) permite almacenar el certificado en un único punto y presentarlo des de endpoints de distintos servicios de AWS sin necesidad de subir el certificado manualmente a cada endpoint
+- Migración del correo corporativo de OVH a GSuite
+- Migración de documentación de NAS/Sambe a Gsuite
+- Elaboración y documentación de una policy clara de uso de IAM: introducción de roles para evitar usar credenciales de usuarios no humanos en aplicativos, emulación de un sistema linux ( basado en user/group ) para la gestión de usuarios humanos para simplificar y homogenizar el trabajo
+- Desde que se requirió: procedimiento para guardar el correo de ex-empleados en un formato ( mbox ) fácilmente recuperable des de distintos softwares de correo electrónico ( documentado )
+- Instancia de Runscope: Como runscope no ofrece un rango de IPs estáticas a whitelistear prototipado y lanzamiento de una instancia para lanzar requests a endpoints de paguro ( públicos y privados ). Para aquellos endpoints que sean o bien privados o bien requieran whitelisting por nuestra parte.
+- Introducción de docker y documentación: esto es el paso previo para poder utilizar servicios basados en docker como ECR, ECS i k8s.
+- DNS: Incorporación de zona privada para disponer de pool de nombres, reservar recursos, etc, que no queremos mostrar al mundo exterior pero nos facilita el trabajo ( por ejemplo, con el uso de Elastic IPs tenemos varias que se usan de forma dinámica pero no
+están siendo utilizadas todo el rato ). Via DNS interno tenemos un mecanismo que nos facilita saber si podemos, o no, coger una
+determinada elastic IP.
+- SSL certs: gestión y deployment de nuevos certificados cada año, introducción de las matrices ( documentadas ) de endpoints SSL de la empresa que facilitan la identificación de aquellos endpoints que hay que modificar cada año ( dos veces al año ahora que tenemos dos certificados *.brandcrumb.com y *.paguro.io ) 
+- Setup de ops-instance-console para que operations pudiera pararla y arrancarla en función del Ec2 tag operations seteado a "yes"
+- Deprecación de Chef 10 y 12: Todos lso aplicativos in-house se deployaban con Chef, a nadie le gustaba ( a mí, tampoco ) después de votación unánime, se deprecó sustituyéndolo por ansible ( citado más adelante ).
+- RDS: migración de tablas MyIsam a InnoDB en todas las bases de datos afectadas
+-  define an alarm framework: 1. API endpoint monitoring ( covered by runscope ) 2. Instance: system ( CPU, RAM... ) and services ( apache, unicorn... ) health ( cubierto por consul que se introdujo a tal efecto )3. service ( application stack level )  
+- Intento de deprecación de certificado con SANS para pasar a plain wildcard ( más barato ) algo que se ha conseguido con paguro.io pero no con brandcrumb.com
+- migración de chef10 a chef12
+- dockerización de chef10 y chef12
+- Deprecación de LDAP y servicio samba
+- Definición de rutina de llegada y salida de empleado ( tareas a realizar )
+- Cooperación en el montaje del cluster de haddoop
+- CORS proxy en nginx en Pau Claris
+- new AMI based on latest Ubuntu LTS
+- user-mon scripts running on Ec2
+- Introducción de packer para hacer builds de AMIs de forma reproducible y controlada ( incluyendo control de versiones )
+- Host nuevo ( en internet ) de SFTP más scripts para creación de usuarios
+- Upgrades de Engine de RDS y elaboración de un protocolo para hacerlo de forma segura ( tiene prerequisitos para SW para que sea viable ) para nuevos desarrollos es obligatorio y debería estar en checklist pero habrá legacy corriendo que no lo respeta ( estos casos serían resolubles por los compañeros de SW sin demasiados problemas )
+- Introduction of Network Acls 
+- jenkins: creacion en AWS ( fue deprecado después ) y migración de jobs
+- Dockerizatioin of knife10 and knife12 ( chef10 and chef12 tools )
+- migration of git repos to github
+- AWS Budget reducción: Muchísimas veces en varios servicios, Ec2, RDS, ES... tenemos más margen pero no mucho más ( pagamos la mitad que en los primeros meses que estuve aquí...). Nunca se deja de revisar y hay servicios que ya hemos reservado varias veces ( como Ec2 y RDS )
+- URI monitoring con runscope para checks internos
+- proxy kibana y actualizaciones ( sacar clientes obsoletos, meter nuevos: prototipado y relaunch de instancia )
+- estudio y documentación para Bankia de lo que en principio aceptaron pero al final no
+- Introducción de ansible y subproyectos: deploys de nuevo código, monitorización via consul y consul-alerts ( deploy de frameworks de alarma customizado por instancia ), método para lanzar comando y/o script contra toda o parte de la plataforma, terraform wrappers ( el objetivo es abstraer la complejidad de terraform para que todo 
+el mundo lo pueda utilizar ), k8s setup ( deprecado, era en instancias de Ec2 ahora el sistema existe de 
+forma nativa en AWS )... ( PROYECTAZO )
+- Elasticsearch en AWS cooperación en setup, elaboración de ACLS, monitorización...
+- Introducción de AWS Organizations ( lo que nos tiene que servir tanto para segmentar billing para clientes como
+entornos en VPCs separadas para los mismos clientes ).
+- Protocolo de mantenimiento de AWS de instancia de NAT sin downtime
+- Protocolo de mantenimiento de AWS de instancia de RDS sin downtime
+- Sustitución de AMI comercial ( e instancia ) de NAT por otra propia para dejar de pagar "licencia" por hora y homogenizar plataforma de Ec2 ( e incorporarla a la monitorización )
+- Reglas de development elaboradas conjuntamente y documentadas con Chema y Jorge para evitar problemas reocurrentes
+
+Presente y Futuro 
+=================
+Todo el rato ( ampliación de guidelines en how to deploy en Paguro con Jorge, ahora ). Budget Reduction siempre que se puede ( requiere tener claro compromiso a 1 año... por eso no lo reservamos todo... )
+Framerwork organizations ( VPC dedicada a clientes, proceso semiautomatizado excepto por dos detalles:
+aliases de mail y certificados VPN (
+IAC => user-data, terraform integración, primero. Luego
+EKS => autodimensionamiento y escalado de servicios ( PROYECTAZO )
+
+Rutina diaria ineludible
+========================
+
+Obviamente se repasa diariamiente y se corrige la monitorización. Asimismo me avanzo a los maintenance
+de AWS para evitar downtime. No voy a listar aquí todos los casos de corregir problemas de monitorización
+o mantenimiento de AWS porque son muchísimos y todos os sonarán igual. Básicamente se trata de estar pendiente
+de los frameworks de alarmas de AWS ( cloudwatch ), Runscope y Consul y actuar proactivamente si se activa
+cualquier alarma para determinar y subsanar el problema.
+
+También me ocupo de cerrar y preparar prácticamente todos los accesos para quien llega o se va.
