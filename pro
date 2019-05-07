@@ -1,6 +1,6 @@
 1. Hector Lopez Bofill vs Quim Torra
 2. Toni Xaquetero comin vs elsa artadi
-3. Rufian vs Mauri
+3. Rufian vs Mauri de l'Ornium
 4. jordi puignero vs josep lluis lluis
 5. llach vs Guardiola
 6. Mainat vs Mas
