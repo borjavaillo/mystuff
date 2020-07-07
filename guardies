@@ -29,3 +29,6 @@ juny:   support 3: 3	           => 150
         support 21: 0.5		   => 25
         support 22: 0.75	   => 37.5
          15-21: 7 dies		   => 350
+							=> 637.5
+
+juliol: support 7: 0.25		  => 12.5		
