@@ -34,6 +34,7 @@ juny:   support 3: 3	           => 150
 juliol: support 7: 0.25		  => 12.5		
             27-31: 5 dies	  => 250
       SOS-130, 27: 1.5		  => 75
+ varnish disk, 29: 2		  => 100
 
 
 agost:        1-2: 2 dies	  => 100
