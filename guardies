@@ -36,8 +36,6 @@ juliol: support 7: 0.25		  => 12.5
       SOS-130, 27: 1.5		  => 75
  varnish disk, 29: 2		  => 100
   redis alarm, 31: 0.25		  => 12.5
+							=> 450
 
-done on master
 agost:        1-2: 2 dies	  => 100
-
-done on master
