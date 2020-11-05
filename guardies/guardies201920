@@ -1,5 +1,4 @@
 extravac includes half days 24 and 31 of dec: 1592.92
-october: no guàrdies
 
 novembre: 25 a 30: 6 dies, 4.75 h => 10.75 		=> 537.5
 
@@ -43,11 +42,10 @@ agost:        1-2: 2 dies	  => 100
 							=> 162.5
 
 setembre:    21-27: 7 dies	  => 350
-							=> 350
+							=> 300
 
 octubre:     26-31; 6 dies	  => 300	
            SOS-152: 1.75          => 88.5
     false positive: 0.5		  => 25
-							=> 412.5
- 
-novembre	 1; 1 dia	  => 50			=> 50	
+    1 day pending of september    => 50
+							=> 462.5
