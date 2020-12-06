@@ -1,4 +1,4 @@
-extravac includes half days 24 and 31 of dec: 1592.92
+extravac includes half days 24 and 31 of dec: 1440
 
 novembre: 25 a 30: 6 dies, 4.75 h => 10.75 		=> 537.5
 
@@ -49,3 +49,5 @@ octubre:     26-31; 6 dies	  => 300
     false positive: 0.5		  => 25
     1 day pending of september    => 50
 							=> 462.5
+
+total guardies novembre19-octubre20: 7125
